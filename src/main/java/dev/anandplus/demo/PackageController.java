@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://webdevelopment-backend-production.up.railway.app")
 public class PackageController {
     public record WebsitePackage(String id, String category, String slug, String name, String description,
             int price, int pages, int days, List<String> features, String accent, String icon, String image) {}

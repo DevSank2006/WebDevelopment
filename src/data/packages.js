@@ -1,3 +1,4 @@
+
 export const categories = [
   "All",
   "Clothing",
@@ -11,12 +12,13 @@ export const categories = [
 export const packages = [
   {
     id: "ecommerce-powerhouse",
+    serviceId: 1,
     category: "E-Commerce",
     slug: "ecommerce",
     name: "E-Commerce Powerhouse",
     description:
       "Full-stack e-commerce platform with multi-vendor support, order tracking, coupons, reviews and inventory. Scales to thousands of SKUs.",
-    price: 699,
+    price: 79999,
     pages: 14,
     days: 18,
     features: ["Product catalog", "Secure checkout", "Inventory & orders"],
@@ -26,12 +28,13 @@ export const packages = [
   },
   {
     id: "saas-launch-kit",
+    serviceId: 2,
     category: "SaaS",
     slug: "software",
     name: "SaaS Launch Kit",
     description:
       "Complete SaaS marketing site + application shell with pricing, auth, dashboard, subscription billing and docs. Ship your product in days, not months.",
-    price: 599,
+    price: 149999,
     pages: 10,
     days: 12,
     features: ["Pricing tables", "Auth & billing", "Admin dashboard"],
@@ -41,12 +44,13 @@ export const packages = [
   },
   {
     id: "hospital-clinic-suite",
+    serviceId: 3,
     category: "Hospital",
     slug: "hospital",
     name: "Hospital & Clinic Suite",
     description:
       "Modern hospital website with doctor directory, online appointment booking, department pages, patient portal and emergency contact — HIPAA-friendly architecture.",
-    price: 499,
+    price: 89999,
     pages: 12,
     days: 14,
     features: ["Appointment booking", "Doctor profiles", "Departments"],
@@ -56,12 +60,13 @@ export const packages = [
   },
   {
     id: "clothing-store-pro",
+    serviceId: 4,
     category: "Clothing",
     slug: "clothing",
     name: "Clothing Store Pro",
     description:
       "A stunning fashion e-commerce storefront with product filtering, wishlist, size guide, and lightning-fast checkout. Perfect for boutiques and premium clothing brands.",
-    price: 299,
+    price: 59999,
     pages: 8,
     days: 10,
     features: ["Product catalog", "Wishlist", "Size guide"],
@@ -71,12 +76,13 @@ export const packages = [
   },
   {
     id: "education-course-platform",
+    serviceId: 5,
     category: "Education",
     slug: "education",
     name: "Education & Course Platform",
     description:
       "LMS-style education site with courses, instructors, student dashboard, quizzes and certificates. Monetize knowledge beautifully.",
-    price: 549,
+    price: 99999,
     pages: 11,
     days: 15,
     features: ["Courses", "Instructors", "Quizzes & certificates"],
@@ -86,12 +92,13 @@ export const packages = [
   },
   {
     id: "corporate-showcase",
+    serviceId: 6,
     category: "Corporate",
     slug: "corporate",
     name: "Corporate Showcase",
     description:
       "Clean, authoritative corporate website with team pages, services, case studies and investor section — built to convert enterprise visitors.",
-    price: 249,
+    price: 34999,
     pages: 7,
     days: 8,
     features: ["Team", "Case studies", "Investor relations"],
@@ -101,4 +108,5 @@ export const packages = [
   },
 ];
 
-export const findPackage = (id) => packages.find((item) => item.id === id);
+export const findPackage = (id) =>
+  packages.find((item) => item.id === id);

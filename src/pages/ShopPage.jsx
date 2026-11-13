@@ -66,9 +66,7 @@ export default function ShopPage() {
                     .includes(query)),
             ),
           );
-          setError(
-            "The demo API could not be reached. Showing the saved demo catalog.",
-          );
+          
         }
       } finally {
         if (active) setLoading(false);

@@ -1,6 +1,6 @@
 import { ArrowUpRight, Clock3, FileText, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useCart } from "../../hooks/useCart.js";
+import { useCart } from "../../hooks/useCart.jsx";
 
 export default function PackageCard({ item, compact = false }) {
   const { add } = useCart();
@@ -51,7 +51,7 @@ export default function PackageCard({ item, compact = false }) {
         </div>
         <div className="mt-4 flex items-center justify-between gap-3">
           <div>
-            <div className="font-display text-2xl font-bold">${item.price}</div>
+            <div className="font-display text-2xl font-bold">₹{item.price}</div>
             <div className="text-[11px] text-slate-500">
               <FileText className="mr-1 inline h-3 w-3" />
               {item.pages} pages · {item.days} days
@@ -59,7 +59,7 @@ export default function PackageCard({ item, compact = false }) {
           </div>
           <button
             type="button"
-            onClick={() => add(item.id)}
+            onClick={() => add(item.serviceId, 1)}
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow-lg transition hover:brightness-110"
           >
             <ShoppingCart className="h-4 w-4" />

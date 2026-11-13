@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, ShoppingCart, X } from "lucide-react";
-import { useCart } from "../../hooks/useCart.js";
+import { useCart } from "../../hooks/useCart.jsx";
+import ProfileMenu from '../layout/ProfileMenu.jsx';
+
 
 const links = [
   ["Home", "/"],
@@ -12,8 +14,33 @@ const links = [
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
   const { count } = useCart();
+  const [open, setOpen] = useState(false);
+   const [isToken, setToken] = useState(null);
+
+useEffect(() => {
+
+  const checkToken = () => {
+    setToken(localStorage.getItem("token"));
+  };
+
+  // Check token when Header first loads
+  checkToken();
+
+  // Listen for changes from other browser tabs
+  window.addEventListener("storage", checkToken);
+
+  // Listen for login/logout changes in this tab
+  window.addEventListener("authChange", checkToken);
+
+  // Remove listeners when Header is removed
+  return () => {
+    window.removeEventListener("storage", checkToken);
+    window.removeEventListener("authChange", checkToken);
+  };
+
+}, []);
+
   const navClass = ({ isActive }) =>
     `rounded-full px-3 py-2 text-sm transition ${isActive ? "bg-white/10 text-white" : "text-slate-300 hover:text-white"}`;
   return (
@@ -42,41 +69,48 @@ export default function Header() {
             </NavLink>
           ))}
         </nav>
-        <div className="hidden items-center gap-2 sm:flex">
-          <Link
-            to="/shop"
-            className="relative rounded-full border border-white/10 p-2.5 text-slate-200 hover:bg-white/10"
-            aria-label={`Shopping cart, ${count} items`}
-          >
-            <ShoppingCart size={17} />
-            {count > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-violet-500 px-1 text-[10px]">
-                {count}
-              </span>
-            )}
-          </Link>
-          <Link
-            to="/signin"
-            className="rounded-full px-3 py-2 text-sm text-slate-300 hover:text-white"
-          >
-            Sign in
-          </Link>
-          <Link
-            to="/contact"
-            className="rounded-full bg-gradient-to-r from-blue-500 to-violet-500 px-4 py-2.5 text-sm font-semibold shadow-glow hover:brightness-110"
-          >
-            Get Started
-          </Link>
-        </div>
-        <button
-          type="button"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="rounded-full p-2 text-slate-200 hover:bg-white/10 lg:hidden"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2">
+         <Link
+  to="/cart"
+  className="relative rounded-full border border-white/10 p-2.5 text-slate-200 hover:bg-white/10"
+  aria-label={`Shopping cart, ${count} items`}
+>
+  <ShoppingCart size={17} />
+
+  {count > 0 && (
+    <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-violet-500 px-1 text-[10px]">
+      {count}
+    </span>
+  )}
+</Link>
+          {isToken ? (
+  <ProfileMenu />
+) : (
+  <Link to="/signin" className="...">
+    Sign In
+  </Link>
+)}
+        <div className="flex items-center gap-2">
+  <Link
+    to="/contact"
+    className="rounded-full bg-gradient-to-r from-blue-500 to-violet-500 px-4 py-2.5 text-sm font-semibold shadow-glow hover:brightness-110"
+  >
+    Get Started
+  </Link>
+
+  
+
+  <button
+    type="button"
+    onClick={() => setOpen(!open)}
+    className="rounded-full p-2 text-slate-200 hover:bg-white/10 lg:hidden"
+  >
+    {open ? <X size={20} /> : <Menu size={20} />}
+  </button>
+</div>
+         
+</div>
+       
       </div>
       {open && (
         <nav

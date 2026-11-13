@@ -12,6 +12,20 @@ import SignInPage from "./pages/SignInPage.jsx";
 import PackageDetailPage from "./pages/PackageDetailPage.jsx";
 import PolicyPage from "./pages/PolicyPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
+import CartPage from "./components/home/CartPage.jsx";
+import VerificationPage from "./components/home/VerifyNow.jsx"
+import MyServicesPage from "./components/layout/MyServicesPage.jsx"
+import MyOrderPage from "./components/layout/MyOrderPage.jsx"
+import SettingsPage from "./components/layout/SettingsPage.jsx"
+import EditProfilePage from "./components/layout/EditProfilePage.jsx"
+import CheckoutPage from "./components/layout/CheckoutPage.jsx"
+import Thankyou from "./components/layout/Thankyour.jsx"
+
+
+
+
+
+
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,7 +50,20 @@ export default function App() {
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/product/:id" element={<PackageDetailPage />} />
           <Route path="/policy/:policy" element={<PolicyPage />} />
+          <Route path="/cart" element={<CartPage/>} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/verify-now" element={<VerificationPage />} />
+          <Route path="/dashboard/orders" element={<MyOrderPage />} />
+        
+          <Route path="/dashboard/services" element={<MyServicesPage />} />
+           <Route path="/dashboard/settings" element={<SettingsPage />} />
+           <Route path="/dashboard/profile" element={<EditProfilePage />} />
+           <Route path="/checkout" element={<CheckoutPage />} />
+           <Route path="/order-placed" element={<Thankyou />} />
+
+          
+
+          
         </Routes>
       </div>
       <Footer />

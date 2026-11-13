@@ -10,7 +10,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { packageApi } from "../services/api.js";
 import { findPackage } from "../data/packages.js";
-import { useCart } from "../hooks/useCart.js";
+import { useCart } from "../hooks/useCart.jsx";
 import PackageArtwork from "../components/packages/PackageArtwork.jsx";
 import StatusMessage from "../components/ui/StatusMessage.jsx";
 
@@ -104,7 +104,7 @@ export default function PackageDetailPage() {
             <div className="mt-7 flex items-center justify-between">
               <div>
                 <span className="font-display text-3xl font-extrabold">
-                  ${item.price}
+                  {item.price}
                 </span>
                 <p className="mt-1 text-[11px] text-slate-500">
                   One-time demo price

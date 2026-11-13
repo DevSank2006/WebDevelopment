@@ -4,9 +4,9 @@ import { contactApi } from "../services/api.js";
 import StatusMessage from "../components/ui/StatusMessage.jsx";
 
 const contactItems = [
-  [Mail, "Email", "hello@anandplus.dev"],
-  [Phone, "Phone / WhatsApp", "+91 98765 43210"],
-  [MapPin, "Studio", "Bengaluru, India · Remote-first"],
+  [Mail, "Email", "onepg.co.in@gmail.com"],
+  [Phone, "Phone / WhatsApp", "+91 74884 84077"],
+  [MapPin, "Office", "Gurugram, India · Remote-first"],
 ];
 const fieldClass =
   "w-full rounded-xl border border-white/10 bg-slate-900/60 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-500 focus:border-blue-400/50";
